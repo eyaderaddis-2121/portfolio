@@ -1,9 +1,14 @@
 /**
  * Centralized API service for the portfolio frontend.
- * All requests go through Vite's proxy (/api → localhost:5000/api).
+ * Dev:  requests go through Vite proxy (/api → localhost:5000/api)
+ * Prod: requests go to VITE_API_URL (the deployed Vercel backend URL)
  */
 
-const BASE = '/api';
+// In production VITE_API_URL = https://portfolio-api-xxx.vercel.app
+// In development it's empty so Vite proxy handles /api/*
+const BASE = import.meta.env.VITE_API_URL
+  ? `${import.meta.env.VITE_API_URL}/api`
+  : '/api';
 
 // ─── Generic fetch wrapper ────────────────────────────────────────
 async function request<T>(
