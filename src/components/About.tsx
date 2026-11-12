@@ -3,9 +3,11 @@ import { motion } from 'framer-motion';
 
 export const About = () => {
   return (
-    <section id="about" className="py-24 bg-white">
+    <section id="about" className="py-24 section-white theme-transition">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+
+          {/* Profile image */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -15,46 +17,74 @@ export const About = () => {
           >
             <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src="https://storage.googleapis.com/dala-prod-public-storage/generated-images/3d7a5e73-4790-4f22-b7c7-9a260298f847/profile-photo-18e683cb-1783622983265.webp"
-                alt="Eyader Addis Belete"
-                className="w-full h-full object-cover"
+                src="/profile.jpg"
+                alt="Eyaderaddis Belete"
+                className="w-full h-full object-cover object-center"
+                onError={(e) => {
+                  // Fallback to a professional avatar placeholder if photo not found
+                  (e.currentTarget as HTMLImageElement).src =
+                    "https://ui-avatars.com/api/?name=Eyaderaddis+Belete&size=600&background=1e3a5f&color=ffffff&bold=true&font-size=0.33";
+                }}
               />
             </div>
-            {/* Decorative element */}
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-teal-500/10 rounded-full blur-3xl -z-10"></div>
-            <div className="absolute -top-6 -left-6 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl -z-10"></div>
+            {/* Decorative glows */}
+            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-teal-500/10 rounded-full blur-3xl -z-10" />
+            <div className="absolute -top-6 -left-6 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl -z-10" />
           </motion.div>
 
+          {/* Text content */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-blue-600 font-semibold mb-4 tracking-wider uppercase text-sm">About Me</h2>
-            <h3 className="text-4xl font-bold text-slate-900 mb-6">
+            <h2 className="text-blue-600 dark:text-blue-400 font-semibold mb-4 tracking-wider uppercase text-sm theme-transition">
+              About Me
+            </h2>
+            <h3 className="text-4xl font-bold mb-6 text-slate-900 dark:text-slate-50 theme-transition">
               Passionate about building software that makes an impact
             </h3>
-            <div className="space-y-4 text-slate-600 text-lg leading-relaxed">
+
+            <div className="space-y-4 text-lg leading-relaxed text-slate-600 dark:text-slate-400 theme-transition">
               <p>
-                I am a dedicated Software Engineering student with a deep-rooted passion for technology and innovation. My journey in software development is driven by a desire to create solutions that solve real-world problems and improve lives.
+                I am a Software Engineering student at <strong className="text-slate-800 dark:text-slate-200">Wollo University</strong> with
+                practical experience in developing web applications using JavaScript, React.js,
+                Node.js, Express.js, and database technologies.
               </p>
               <p>
-                I specialize in full-stack development, with a particular interest in AI-powered applications and scalable cloud architecture. My approach combines technical rigor with a user-centric design philosophy, ensuring that every project I undertake is both functional and intuitive.
+                Interested in frontend &amp; backend development, REST API integration, and building
+                user-focused software solutions. My career interests span Full-Stack Web Development,
+                Frontend &amp; Backend Engineering, Artificial Intelligence, and Machine Learning.
               </p>
               <p>
-                Continuous learning is at the heart of my professional growth. I thrive in collaborative environments, valuing teamwork and effective communication as essential components of successful project delivery. Whether it's participating in hackathons or contributing to open-source projects, I am always seeking new challenges to expand my skill set.
+                Problem-solving and analytical thinking, communication &amp; teamwork, motivation &amp; commitment,
+                and continuous learning are the professional strengths I bring to every project.
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-6 mt-10">
-              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                <p className="text-3xl font-bold text-blue-600">3+</p>
-                <p className="text-sm text-slate-500 uppercase tracking-wide mt-1">Years Learning</p>
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-4 mt-10">
+              <div className="p-4 rounded-2xl border theme-transition
+                              bg-slate-50 border-slate-100
+                              dark:bg-slate-800/60 dark:border-slate-700">
+                <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">3+</p>
+                <p className="text-xs uppercase tracking-wide mt-1
+                              text-slate-500 dark:text-slate-400">Years Learning</p>
               </div>
-              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                <p className="text-3xl font-bold text-teal-500">20+</p>
-                <p className="text-sm text-slate-500 uppercase tracking-wide mt-1">Projects Completed</p>
+              <div className="p-4 rounded-2xl border theme-transition
+                              bg-slate-50 border-slate-100
+                              dark:bg-slate-800/60 dark:border-slate-700">
+                <p className="text-3xl font-bold text-teal-500 dark:text-teal-400">6+</p>
+                <p className="text-xs uppercase tracking-wide mt-1
+                              text-slate-500 dark:text-slate-400">Projects Built</p>
+              </div>
+              <div className="p-4 rounded-2xl border theme-transition
+                              bg-slate-50 border-slate-100
+                              dark:bg-slate-800/60 dark:border-slate-700">
+                <p className="text-3xl font-bold text-indigo-500 dark:text-indigo-400">3</p>
+                <p className="text-xs uppercase tracking-wide mt-1
+                              text-slate-500 dark:text-slate-400">Languages</p>
               </div>
             </div>
           </motion.div>

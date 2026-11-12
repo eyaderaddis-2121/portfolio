@@ -21,6 +21,14 @@ export default defineConfig({
     port: 3000,
     host: true,
     allowedHosts: true,
+    // Proxy /api/* → backend on port 5000 (no CORS issues, no hardcoded URLs)
+    proxy: {
+      '/api': {
+        target:       'http://localhost:5000',
+        changeOrigin: true,
+        secure:       false,
+      },
+    },
   },
   preview: {
     port: 3000,
