@@ -12,11 +12,11 @@ const poolConfig = {
   database:           process.env.DB_NAME     || 'portfolio',
   port:               parseInt(process.env.DB_PORT || '3306'),
   waitForConnections: true,
-  connectionLimit:    5,      // keep low for serverless
+  connectionLimit:    5,
   queueLimit:         0,
   timezone:           '+00:00',
-  // TiDB Cloud / PlanetScale requires SSL in production
-  ...(process.env.NODE_ENV === 'production' && process.env.DB_HOST !== 'localhost'
+  // Use SSL whenever DB_HOST is not localhost (i.e. TiDB Cloud / any cloud provider)
+  ...(process.env.DB_HOST && process.env.DB_HOST !== 'localhost'
     ? { ssl: { rejectUnauthorized: true } }
     : {}),
 };
